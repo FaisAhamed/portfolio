@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-scroll'
-import { FiSun, FiMoon, FiMenu, FiX, FiCode } from 'react-icons/fi'
+import { FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi'
 import { useScrollSpy } from '../hooks/useScrollSpy'
+import profileImg from '../assets/profile.jpg'
 
 const NAV_LINKS = [
   { id: 'about',      label: 'About'      },
@@ -43,7 +44,7 @@ export default function Navbar({ theme, toggleTheme }) {
         <div className="navbar__inner container">
           {/* Logo */}
           <Link to="hero" smooth duration={600} className="navbar__logo" aria-label="Go to top">
-            <img src="/profile.jpg" alt="Fais" className="navbar__avatar" />
+            <img src={profileImg} alt="Fais" className="navbar__avatar" />
             <span className="navbar__logo-text">
               <span className="gradient-text">Fais</span>
               <span className="navbar__logo-dot">.</span>

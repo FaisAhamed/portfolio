@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiCode, FiLayers, FiAward, FiCoffee } from 'react-icons/fi'
+import profileImg from '../assets/profile.jpg'
 
 function useCountUp(target, duration = 1800, start = false) {
   const [count, setCount] = useState(0)
@@ -84,7 +85,7 @@ export default function About() {
               <div className="about__photo">
                 <div className="about__photo-inner">
                   <img
-                    src="/profile.jpg"
+                    src={profileImg}
                     alt="Fais — Full-Stack Developer"
                     className="about__photo-img"
                   />

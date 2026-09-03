@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-scroll'
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi'
 import { useTypewriter } from '../hooks/useTypewriter'
+import profileImg from '../assets/profile.jpg'
 
 const TITLES = ['Full-Stack Developer', 'React Enthusiast', 'Laravel Developer', 'Problem Solver']
 
@@ -229,7 +230,7 @@ export default function Hero() {
           {/* Photo */}
           <div className="hero__photo-frame">
             <img
-              src="/profile.jpg"
+              src={profileImg}
               alt="M.T. Fais Ahamed — Full Stack Developer"
               className="hero__photo"
             />
