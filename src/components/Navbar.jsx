@@ -43,7 +43,7 @@ export default function Navbar({ theme, toggleTheme }) {
         <div className="navbar__inner container">
           {/* Logo */}
           <Link to="hero" smooth duration={600} className="navbar__logo" aria-label="Go to top">
-            <FiCode className="navbar__logo-icon" aria-hidden="true" />
+            <img src="/profile.jpg" alt="Fais" className="navbar__avatar" />
             <span className="navbar__logo-text">
               <span className="gradient-text">Fais</span>
               <span className="navbar__logo-dot">.</span>
@@ -181,6 +181,15 @@ export default function Navbar({ theme, toggleTheme }) {
         .navbar__logo-icon {
           color: var(--accent-1);
           font-size: 1.4rem;
+        }
+        .navbar__avatar {
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: top center;
+          border: 2px solid var(--accent-1);
+          flex-shrink: 0;
         }
         .navbar__logo-dot { color: var(--accent-1); }
         .navbar__links {

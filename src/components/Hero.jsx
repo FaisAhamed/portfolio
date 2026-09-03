@@ -219,34 +219,58 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Code card */}
+        {/* Profile photo card */}
         <motion.div
-          className="hero__card"
+          className="hero__photo-card"
           initial={{ opacity: 0, x: 60, rotateY: -15 }}
           animate={{ opacity: 1, x: 0,  rotateY: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <div className="hero__card-header" aria-hidden="true">
-            <span className="hero__card-dot" style={{ background: '#ff5f57' }} />
-            <span className="hero__card-dot" style={{ background: '#ffbd2e' }} />
-            <span className="hero__card-dot" style={{ background: '#28ca41' }} />
-            <span className="hero__card-filename">fais.js</span>
+          {/* Photo */}
+          <div className="hero__photo-frame">
+            <img
+              src="/profile.jpg"
+              alt="M.T. Fais Ahamed — Full Stack Developer"
+              className="hero__photo"
+            />
+            {/* Glow ring */}
+            <div className="hero__photo-glow" aria-hidden="true" />
           </div>
-          <pre className="hero__code" aria-label="Code snippet about Fais">
-{`const developer = {
-  name: "Fais",
-  role: "Full-Stack Dev",
-  education: "HND Software Eng.",
-  stack: {
-    frontend: ["React", "HTML", "CSS"],
-    backend:  ["Node.js", "Laravel"],
-    database: ["MySQL", "MariaDB"],
-    language: ["PHP", "Java", "JS"],
-  },
-  passion: "Building cool things",
-  available: true, // hire me!
-};`}
-          </pre>
+
+          {/* Floating status badge */}
+          <motion.div
+            className="hero__status-badge"
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            aria-label="Available for work"
+          >
+            <span className="hero__status-dot" aria-hidden="true" />
+            Available for hire
+          </motion.div>
+
+          {/* Floating experience badge */}
+          <motion.div
+            className="hero__exp-badge"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+            aria-hidden="true"
+          >
+            <span className="hero__exp-icon">💼</span>
+            <div>
+              <div className="hero__exp-num">3+</div>
+              <div className="hero__exp-label">Years Coding</div>
+            </div>
+          </motion.div>
+
+          {/* Tech stack pill */}
+          <motion.div
+            className="hero__tech-pill"
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+            aria-hidden="true"
+          >
+            ⚛️ React &nbsp;·&nbsp; 🐘 Laravel &nbsp;·&nbsp; 🟨 JS
+          </motion.div>
         </motion.div>
       </div>
 
@@ -448,6 +472,117 @@ export default function Hero() {
           background: var(--accent-1);
           border-radius: 2px;
         }
+        /* ---- Photo card ---- */
+        .hero__photo-card {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .hero__photo-frame {
+          position: relative;
+          width: 320px;
+          height: 400px;
+          border-radius: 28px;
+          overflow: hidden;
+          border: 2px solid var(--border);
+          box-shadow: 0 24px 80px rgba(0,212,255,0.18), 0 0 0 1px var(--border);
+        }
+        .hero__photo {
+          width: 100%; height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+          transition: transform 0.6s ease;
+        }
+        .hero__photo-frame:hover .hero__photo { transform: scale(1.04); }
+        .hero__photo-glow {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(0,212,255,0.12) 100%
+          );
+          pointer-events: none;
+        }
+        /* Status badge — top right */
+        .hero__status-badge {
+          position: absolute;
+          top: -14px;
+          right: -14px;
+          display: flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.45rem 0.9rem;
+          background: var(--bg-card);
+          border: 1px solid rgba(40,202,65,0.35);
+          border-radius: 20px;
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: #28ca41;
+          box-shadow: var(--shadow-card);
+          z-index: 2;
+          white-space: nowrap;
+        }
+        .hero__status-dot {
+          width: 8px; height: 8px;
+          background: #28ca41;
+          border-radius: 50%;
+          animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+          0%,100%{ box-shadow: 0 0 0 0 rgba(40,202,65,0.5); }
+          50%{ box-shadow: 0 0 0 6px rgba(40,202,65,0); }
+        }
+        /* Experience badge — bottom left */
+        .hero__exp-badge {
+          position: absolute;
+          bottom: 24px;
+          left: -20px;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.6rem 0.9rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-md);
+          box-shadow: var(--shadow-card);
+          z-index: 2;
+        }
+        .hero__exp-icon { font-size: 1.3rem; }
+        .hero__exp-num {
+          font-size: 1.1rem;
+          font-weight: 800;
+          background: var(--accent-gradient);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          line-height: 1;
+        }
+        .hero__exp-label {
+          font-size: 0.68rem;
+          color: var(--text-muted);
+          font-weight: 500;
+          white-space: nowrap;
+        }
+        /* Tech pill — bottom */
+        .hero__tech-pill {
+          position: absolute;
+          bottom: -18px;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 0.45rem 1.1rem;
+          background: var(--bg-card);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--text-secondary);
+          box-shadow: var(--shadow-card);
+          white-space: nowrap;
+          z-index: 2;
+        }
         @media (max-width: 900px) {
           .hero__content {
             grid-template-columns: 1fr;
@@ -458,10 +593,12 @@ export default function Hero() {
           .hero__bio { margin-left: auto; margin-right: auto; }
           .hero__cta { justify-content: center; }
           .hero__socials { justify-content: center; }
-          .hero__card { max-width: 480px; margin: 0 auto; }
+          .hero__photo-frame { width: 260px; height: 320px; }
+          .hero__photo-card { margin-bottom: 2rem; }
         }
         @media (max-width: 480px) {
           .hero__cta { flex-direction: column; align-items: center; }
+          .hero__photo-frame { width: 220px; height: 280px; }
         }
       `}</style>
     </section>
